@@ -86,14 +86,18 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position', 'ui.bootstrap
 
       //pop-up element used to display matches
       var popUpEl = angular.element('<div typeahead-popup></div>');
-      popUpEl.attr({
-        id: popupId,
-        matches: 'matches',
-        active: 'activeIdx',
-        select: 'select(activeIdx)',
-        query: 'query',
-        position: 'position'
-      });
+          popUpAttrs = {
+            id: popupId,
+            matches: 'matches',
+            active: 'activeIdx',
+            select: 'select(activeIdx)',
+            query: 'query',
+            position: 'position',
+            popupUrl: attrs.popupUrl || null
+          };
+
+      popUpEl.attr(popUpAttrs);
+
       //custom item template
       if (angular.isDefined(attrs.typeaheadTemplateUrl)) {
         popUpEl.attr('template-url', attrs.typeaheadTemplateUrl);
